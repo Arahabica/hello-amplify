@@ -4,7 +4,7 @@ import Amplify from "aws-amplify";
 import {AmplifyAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
 import {AuthState, onAuthUIStateChange} from '@aws-amplify/ui-components';
 import awsmobile from './aws-exports';
-//import Todos from './Todos';
+import Todos from './Todos';
 
 Amplify.configure(awsmobile);
 
@@ -19,7 +19,7 @@ const App = () => {
 
     return authState === AuthState.SignedIn ? (
         <div className="App">
-            <div/>
+            <Todos/>
             <AmplifySignOut/>
         </div>
     ) : (
