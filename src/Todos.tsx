@@ -9,7 +9,7 @@ import {ListTodosQuery} from './API';
 
 Amplify.configure(awsmobile);
 
-type Todo = {
+type Todos = {
     id: string,
     name: string,
     description: string | null,
@@ -19,7 +19,7 @@ type Todo = {
 
 
 const Todos: React.FC = () => {
-    const [state, setState] = useState<Todo[]>([]);
+    const [state, setState] = useState<Todos[]>([]);
     const fetchTodos = async () => {
         // query
         const response = (await API.graphql(
@@ -27,7 +27,7 @@ const Todos: React.FC = () => {
         )) as GraphQLResult;
         const todos = response.data as ListTodosQuery;
         if (todos.listTodos != null) {
-            setState(todos.listTodos.items as Todo[]);
+            setState(todos.listTodos.items as Todos[]);
         }
     };
     useEffect(() => {
